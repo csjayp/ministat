@@ -12,14 +12,18 @@
 #include "config.h"
 
 #include <sys/cdefs.h>
+#ifndef linux
 __FBSDID("$FreeBSD$");
+#endif
 
 #ifdef USE_CAPSICUM
 #include <sys/capsicum.h>
 #endif
 #include <sys/ioctl.h>
 #include <sys/queue.h>
+#ifndef linux
 #include <sys/ttycom.h>
+#endif
 
 #ifdef USE_CAPSICUM
 #include <capsicum_helpers.h>
