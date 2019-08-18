@@ -4,11 +4,12 @@ CFLAGS+=	-pipe -O2 -Wall -g
 OBJS=	ministat.c
 CC?=	cc
 TARGETS=	ministat
+LIBS= -lm
 
 all: $(TARGETS)
 
 ministat:	$(OBJS)
-	$(CC) -o $@ $(OBJS) $(CFLAGS)
+	$(CC) -o $@ $(OBJS) $(CFLAGS) $(LIBS)
 
 install:
 	[ -d $(PREFIX)/bin ] || mkdir -p $(PREFIX)/bin
