@@ -10,3 +10,7 @@ steps:
 - name: 'gcr.io/csjp-gcloud/ministat'
   id: Run build
   entrypoint: /build.sh
+
+- name: 'gcr.io/csjp-gcloud/ministat'
+  id: Run unit tests
+  entrypoint: /tests/test.sh
