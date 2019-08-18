@@ -9,16 +9,21 @@
  * ----------------------------------------------------------------------------
  *
  */
+#include "config.h"
 
 #include <sys/cdefs.h>
 __FBSDID("$FreeBSD$");
 
+#ifdef USE_CAPSICUM
 #include <sys/capsicum.h>
+#endif
 #include <sys/ioctl.h>
 #include <sys/queue.h>
 #include <sys/ttycom.h>
 
+#ifdef USE_CAPSICUM
 #include <capsicum_helpers.h>
+#endif
 #include <ctype.h>
 #include <err.h>
 #include <errno.h>
@@ -625,6 +630,7 @@ main(int argc, char **argv)
 		}
 	}
 
+#ifdef USE_CAPSICUM
 	if (caph_limit_stdio() < 0)
 		err(2, "capsicum");
 
@@ -636,6 +642,7 @@ main(int argc, char **argv)
 	/* Enter Capsicum sandbox. */
 	if (caph_enter() < 0)
 		err(2, "unable to enter capability mode");
+#endif
 
 	for (i = 0; i < nds; i++) {
 		ds[i] = ReadSet(setfiles[i], setfilenames[i], column, delim);
