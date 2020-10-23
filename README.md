@@ -1,6 +1,6 @@
 ## Ministat
 
-A small tool to do the statistics legwork on benchmarks etc.
+A small tool to do the statistics legwork on benchmarks etc. from the FreeBSD base system.
 
 Prepare your data into two files, one number per line
 run:
